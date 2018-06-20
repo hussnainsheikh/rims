@@ -18,3 +18,13 @@
 coverage/
 
 public/uploads/tmp/
+
+#Ignore Environments files, create files from samples file and enter your smtp details
+
+./config/environments/development.rb
+./config/environments/production.rb
+./config/environments/test.rb
+
+#Ignore Devise config file, create devise.rb from sample-devise.rb and enter your information
+
+./config/initializers/devise.rb

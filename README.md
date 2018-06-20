@@ -22,12 +22,12 @@ This will install all the gem dependencies for you, create a local database, run
 
 **Admin User**
 ```
-username: admin@example.com
-password: changeme
+username: sheikhhussnain23@gmail.com
+password: admin
 ```
 **Regular User**
 ```
-username: user@example.com
+username: 13054119-147@uog.edu.pk
 password: changeme
 ```
 

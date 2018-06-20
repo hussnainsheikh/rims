@@ -1,14 +1,12 @@
 class Item < ActiveRecord::Base
-  mount_uploader :picture, PictureUploader
-  attr_accessible :description, :location, :name, :picture, :product_model_number, :vendor_part_number, :quantity, :unit_value, :vendor_url, :value, :vendor_name, :category
+	resourcify
+    attr_accessible :description, :name, :product_model_number, :quantity, :value, :vendor_name, :category_id, :status, :customer_id
 
 self.per_page = 25
 
-belongs_to :item
-after_save :update_value
+belongs_to :customer
+belongs_to :category
+#after_save :update_value
 protected
 
-  def update_value
-   update_column :value, (quantity * unit_value)
-  end
 end

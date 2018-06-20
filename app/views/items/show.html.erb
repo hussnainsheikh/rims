@@ -1,16 +1,12 @@
-
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title"><%= @item.name %></h3>
   </div>
-
   <div class="panel-body">
-
     <div class="container">
-
       <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8"><%= image_tag(@item.picture_url, :width => "65%") if @item.picture.present? %></div>
+        <div class="col-md-2"><b>Category</b></div>
+        <div class="col-md-8"><%= simple_format(@item.category.name) %></div>
       </div>
 
       <div class="row">
@@ -29,45 +25,25 @@
       </div>
 
       <div class="row">
-        <div class="col-md-2"><b>Vendor Part Number</b></div>
-        <div class="col-md-4"><%= @item.vendor_part_number %></div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-2"><b>Vendor URL</b></div>
-        <div class="col-md-4"><%= link_to(@item.vendor_url, @item.vendor_url, :target => "_blank") %></div>
-      </div>
-
-      <div class="row">
         <div class="col-md-2"><b>Quantity</b></div>
         <div class="col-md-4"><%= @item.quantity %></div>
       </div>
 
       <div class="row">
-        <div class="col-md-2"><b>Unit Value</b></div>
-        <div class="col-md-4"><%= number_to_currency(@item.unit_value, :unit => "$")%></div>
+        <div class="col-md-2"><b>Status</b></div>
+        <div class="col-md-4"><%= @item.status %></div>
       </div>
 
+      <% if current_user.has_role? :admin %>
       <div class="row">
-        <div class="col-md-2"><b>Total Value</b></div>
-        <div class="col-md-4"><%= number_to_currency(@item.value, :unit => "$") %></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <%= link_to 'Edit', edit_item_path(@item), :class => "btn btn-primary" %>
+          <%= link_to 'Delete', @item, confirm: 'Are you sure?', method: :delete, :class => "btn btn-warning" %>
+          <%= link_to 'Cancel', items_path, :class => "btn btn-danger" %>
+        </div>
       </div>
-
-        <div class="row">
-          <div class="col-md-2"><b>Location</b></div>
-          <div class="col-md-4"><%= @item.location %></div>
-        </div>
-
-        <div class="row">
-          <div class="col-md-2"></div>
-          <div class="col-md-4">
-            <%= link_to 'Edit', edit_item_path(@item), :class => "btn btn-primary" %>
-            <%= link_to 'Delete', @item, confirm: 'Are you sure?', method: :delete, :class => "btn btn-warning" %>
-            <%= link_to 'Cancel', items_path, :class => "btn btn-danger" %>
-          </div>
-        </div>
-
+      <% end %>
     </div>
-
-
+  </div>
 </div>

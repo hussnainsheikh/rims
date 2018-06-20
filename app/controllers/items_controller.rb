@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
+    @category = Category.new
+    @customer = Customer.new
     @items = Item.all
     respond_with(@items)
   end
